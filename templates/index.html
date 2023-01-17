@@ -32,6 +32,11 @@
                         </div>
     
                     </div>
+                    <div class="row mt-5">
+                        <div class="demo-container">
+                            <div id="gridContainer"></div>
+                          </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,18 +87,34 @@
                 }),
                 success: function (res) {
                     loadPanel.hide();
-                    console.log(res)
-                    // if(res["status"] == "success"){
-                    //     alert("ทำการอัพเดทเรียบร้อยแล้ว!");
-                    // }
-                    // else{
-                    //     alert("เกิดข้อผืดพลาด! กรุณาลองใหม่อีกครั้ง!");
-                    // }
+                    get_report(res);
                 },
                 error: function (err) {
                     loadPanel.hide();
                 }
             })
+        }
+
+        function get_report(data) {
+            $('#gridContainer').dxDataGrid({
+                dataSource: data,
+                export: {
+                enabled: true,
+                allowExportSelectedData: false,
+                },
+                paging: {
+                pageSize: 10,
+                },
+                pager: {
+                visible: true,
+                allowedPageSizes: [5, 10, 'all'],
+                showPageSizeSelector: true,
+                showInfo: true,
+                showNavigationButtons: true,
+                },
+                columns: ['Cookie', 'Token'],
+                showBorders: true,
+            });
         }
     
     </script>
