@@ -46,8 +46,7 @@ def api_gen_list_token():
         list_token.append({"Cookie": cookie, "Token": token})
 
     f.close()
-    path = "listToken.txt"
-    return send_file(path, as_attachment=True)
+    return jsonify(list_token)
 
 
 if __name__ == '__main__':
