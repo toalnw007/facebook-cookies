@@ -16,7 +16,7 @@ def api_gen_list_token():
     list_cookies = data_json['list_cookies']
     list_token = []
 
-    f = open("listToken.txt", "a")
+    f = open("listToken.txt", "w")
     
     for cookie in list_cookies :
         data = requests.get('https://business.facebook.com/business_locations', headers = {
