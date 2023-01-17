@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello, Flask!"
+    return render_template('index.html')
 
 @app.route('/gen-list-token', methods=['POST'])
 def api_gen_list_token():
